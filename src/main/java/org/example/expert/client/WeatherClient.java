@@ -28,9 +28,9 @@ public class WeatherClient {
 
         WeatherDto[] weatherArray = responseEntity.getBody();
         if (!HttpStatus.OK.equals(responseEntity.getStatusCode())) { // 단순히 else 부분 제거
-            throw new ServerException("날씨 데이터를 가져오는데 실패했습니다. 상태 코드: " + responseEntity.getStatusCode());
+            throw new ServerException("날씨 데이터를 가져오는데 실패했습니다. 상태 코드: " + responseEntity.getStatusCode()); // if 바로뒤에 실행할 코드가 있으면 else 가 필요 없음
         }
-        if (weatherArray == null || weatherArray.length == 0) {
+        if (weatherArray == null || weatherArray.length == 0) { // if(검사)를 개별적으로 수행하여 가독성 향상
             throw new ServerException("날씨 데이터가 없습니다.");
         }
 
