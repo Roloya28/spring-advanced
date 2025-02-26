@@ -21,8 +21,8 @@ public interface TodoRepository extends JpaRepository<Todo, Long> {
 //    @Query("SELECT t FROM Todo t " +
 //            "LEFT JOIN FETCH t.user " +
 //            "WHERE t.id = :todoId")
-    @EntityGraph(attributePaths = {"user"}) // 기존 페치 조인을 위한 JPQL 퀴리를 짜지 않고, @EntityGrapth 를 활용하여 페치 조인을 진행
-    Optional<Todo> findByIdWithUser(@Param("todoId") Long todoId);
+    @EntityGraph(attributePaths = {"user"}) // 기존 페치 조인을 위한 JPQL 퀴리를 짜지 않고, @EntityGraph 를 활용하여 페치 조인을 진행
+    Optional<Todo> findById(@Param("todoId") Long todoId);
 
     int countById(Long todoId);
 }

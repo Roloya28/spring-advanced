@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @ExtendWith(SpringExtension.class)
 class PasswordEncoderTest {
 
-    @InjectMocks
+    @InjectMocks // 테스트 대상 객체
     private PasswordEncoder passwordEncoder;
 
     @Test
@@ -20,7 +20,8 @@ class PasswordEncoderTest {
         String encodedPassword = passwordEncoder.encode(rawPassword);
 
         // when
-        boolean matches = passwordEncoder.matches(encodedPassword, rawPassword);
+        boolean matches = passwordEncoder.matches(rawPassword, encodedPassword); // 인자 순서 변경
+        // 원본 비밀번호를 암호화한 후 기존 암호화 된 값을 비교하기 때문
 
         // then
         assertTrue(matches);
